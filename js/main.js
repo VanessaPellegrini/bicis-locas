@@ -4,16 +4,19 @@ function validateForm(){
 	var lastName = document.getElementById("lastname").value;
 	var email = document.getElementById("input-email").value;
 	var pass = document.getElementById("input-password").value;
-	var index = document.getElementById("select").selectedIndex;
+	var index = document.getElementsByClassName("form-control")[5].value;
+	var tweetNick = document.getElementById("input-social").value;
+	var checkbox = document.getElementsByClassName("checkbox ")[0];
 	var firstChar = /([A-Z])[a-z]/;
 	var notNumber = /([0-9])/;
 
-//validaciones y creación de nodos
-/*Validación nombre
-*Campo obligatorio
-*nombre sin números
-*La primera letra mayús
-*/
+	//validaciones y creación de nodos
+	/*Validación nombre
+	*Campo obligatorio
+	*nombre sin números
+	*La primera letra mayús
+	selectedIndex
+	*/
 	function valName(){
 		if(name==""){
 			var nodoPadre = document.getElementsByClassName("name-container input-box")[0];
@@ -38,12 +41,12 @@ function validateForm(){
 		};
 	}
 	valName();
-/*
-Validación apellido
-*Obligatorio
-*Solo mayús
-*Mayús
-*/
+	/*
+	Validación apellido
+	*Obligatorio
+	*Solo mayús
+	*Mayús
+	*/
 	function valLastName(){
 		if(lastName==""){
 			var nodoPadre = document.getElementsByClassName("lastname-container input-box")[0];
@@ -67,13 +70,13 @@ Validación apellido
 			return true;
 		};
 
-	}
+	};
 	valLastName();
 
-/* Validación email
-*obligatorio
-*formato válido email 
-*/
+	/* Validación email
+	*obligatorio
+	*formato válido email 
+	*/
 	function valEmail(){
 		var validateEmail = /\w+@\w+\.+[a-z]/;
 		if(email==""){
@@ -91,14 +94,14 @@ Validación apellido
 		}else{
 			return true;
 		};
-	}
+	};
 	valEmail();
-/* Validación password
-*obligatorio
-*el campo pass no debe ser igual a "password" o "123456"
-o "098754"
-*al menos 6 digitos
-*/
+	/* Validación password
+	*obligatorio
+	*el campo pass no debe ser igual a "password" o "123456"
+	o "098754"
+	*al menos 6 digitos
+	*/
 	function valPass(){
 		if(pass==""){
 			var nodoPadre = document.getElementsByClassName("form-group input-box")[0];
@@ -121,12 +124,12 @@ o "098754"
 		}else{
 			return true;
 		};
-	}
+	};
 	valPass();
 	/* validar lista
 	*/
 	function valIndex(){
-		if(index == "" ) {
+		if(index == "" || index == "0") {
 			var nodoPadre = document.getElementsByClassName("form-group input-box")[1];
 			var mensaje = document.createElement("span");
 			var index_msj = document.createTextNode("Debe seleccionar al menos una opción");
@@ -134,10 +137,39 @@ o "098754"
 			mensaje.appendChild(index_msj);
   			
   		}else{
-  		return true;
+  			return true;
   		};
   
-	}
+	};
 	valIndex();
+	/************************FUNCIONAN*************************************************
+	validar tweet
 	
+	function valTweet(){
+		if(tweetNick==""){
+			var nodoPadre = document.getElementsByClassName("input-group")[0];
+			var mensaje = document.createElement("span");
+			var tweet = document.createTextNode("Debe ingresar los campos Obligatorios");
+			nodoPadre.appendChild(mensaje);
+			mensaje.appendChild(tweet);
+		}else{
+			return true;
+		};
+	};
+	valTweet();
+	/*
+	validar checkbox
+		function valCheck(){
+		if( !checkbox.checked ){
+  			var nodoPadre = document.getElementsByClassName("checkbox ")[0];
+			var mensaje = document.createElement("span");
+			var check= document.createTextNode("Debe ingresar los campos Obligatorios");
+			nodoPadre.appendChild(mensaje);
+			mensaje.appendChild(check);
+		}else{
+			return true;
+		};
+	};
+	valCheck();
+	*/
 }
