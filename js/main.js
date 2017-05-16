@@ -4,6 +4,7 @@ function validateForm(){
 	var lastName = document.getElementById("lastname").value;
 	var email = document.getElementById("input-email").value;
 	var pass = document.getElementById("input-password").value;
+	var index = document.getElementById("select").selectedIndex;
 	var firstChar = /([A-Z])[a-z]/;
 	var notNumber = /([0-9])/;
 
@@ -34,7 +35,7 @@ function validateForm(){
 			mensaje.appendChild(nombre_vacio);
 		}else{
 			return true;
-		}
+		};
 	}
 	valName();
 /*
@@ -64,7 +65,7 @@ Validación apellido
 			mensaje.appendChild(last_name_number);
 		}else{
 			return true;
-		}
+		};
 
 	}
 	valLastName();
@@ -89,12 +90,54 @@ Validación apellido
 			mensaje.appendChild(incorrect_email);
 		}else{
 			return true;
-		}
+		};
 	}
 	valEmail();
 /* Validación password
 *obligatorio
 *el campo pass no debe ser igual a "password" o "123456"
 o "098754"
+*al menos 6 digitos
 */
+	function valPass(){
+		if(pass==""){
+			var nodoPadre = document.getElementsByClassName("form-group input-box")[0];
+			var mensaje = document.createElement("span");
+			var pass_vacio = document.createTextNode("Debe ingresar los campos Obligatorios");
+			nodoPadre.appendChild(mensaje);
+			mensaje.appendChild(pass_vacio);
+		}else if((pass == "password") || (pass== 123456) || (pass== "098754")){
+			var nodoPadre = document.getElementsByClassName("form-group input-box")[0];
+			var mensaje = document.createElement("span");
+			var pass_pass = document.createTextNode("Su contraseña no puede ser: password, 123456 o 098754");
+			nodoPadre.appendChild(mensaje);
+			mensaje.appendChild(pass_pass);
+		}else if(pass.length < 5){
+			var nodoPadre = document.getElementsByClassName("form-group input-box")[0];
+			var mensaje = document.createElement("span");
+			var pass_pass = document.createTextNode("Su contraseña debe tener al menos 6 caracteres");
+			nodoPadre.appendChild(mensaje);
+			mensaje.appendChild(pass_pass);
+		}else{
+			return true;
+		};
+	}
+	valPass();
+	/* validar lista
+	*/
+	function valIndex(){
+		if(index == "" ) {
+			var nodoPadre = document.getElementsByClassName("form-group input-box")[1];
+			var mensaje = document.createElement("span");
+			var index_msj = document.createTextNode("Debe seleccionar al menos una opción");
+			nodoPadre.appendChild(mensaje);
+			mensaje.appendChild(index_msj);
+  			
+  		}else{
+  		return true;
+  		};
+  
+	}
+	valIndex();
+	
 }
