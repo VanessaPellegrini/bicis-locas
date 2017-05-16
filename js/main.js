@@ -74,7 +74,22 @@ Validación apellido
 *formato válido email 
 */
 	function valEmail(){
-		
+		var validateEmail = /\w+@\w+\.+[a-z]/;
+		if(email==""){
+			var nodoPadre = document.getElementsByClassName("email-container input-box")[0];
+			var mensaje = document.createElement("span");
+			var email_vacio = document.createTextNode("Debe ingresar los campos Obligatorios");
+			nodoPadre.appendChild(mensaje);
+			mensaje.appendChild(email_vacio);
+		}else if(!validateEmail.test(email)){
+			var nodoPadre = document.getElementsByClassName("email-container input-box")[0];
+			var mensaje = document.createElement("span");
+			var incorrect_email= document.createTextNode("El formato de su correo es incorrecto ");
+			nodoPadre.appendChild(mensaje);
+			mensaje.appendChild(incorrect_email);
+		}else{
+			return true;
+		}
 	}
 	valEmail();
 /* Validación password
