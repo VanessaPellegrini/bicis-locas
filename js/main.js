@@ -1,11 +1,5 @@
 function validateForm(){
 	/* Escribe tú código aquí */
-	var name = document.getElementById("name").value;
-	var lastName = document.getElementById("lastname").value;
-	var email = document.getElementById("input-email").value;
-	var pass = document.getElementById("input-password").value;
-	var tweetNick = document.getElementById("input-social").value;
-	var checkbox = document.getElementsByClassName("checkbox ")[0];
 	var firstChar = /([A-Z])[a-z]/;
 	var notNumber = /([0-9])/;
 
@@ -17,6 +11,7 @@ function validateForm(){
 	selectedIndex
 	*/
 	function valName(){
+		var name = document.getElementById("name").value;
 		if(name==""){
 			var nodoPadre = document.getElementsByClassName("name-container input-box")[0];
 			var mensaje = document.createElement("span");
@@ -47,6 +42,7 @@ function validateForm(){
 	*Mayús
 	*/
 	function valLastName(){
+		var lastName = document.getElementById("lastname").value;
 		if(lastName==""){
 			var nodoPadre = document.getElementsByClassName("lastname-container input-box")[0];
 			var mensaje = document.createElement("span");
@@ -77,6 +73,7 @@ function validateForm(){
 	*formato válido email 
 	*/
 	function valEmail(){
+		var email = document.getElementById("input-email").value;
 		var validateEmail = /\w+@\w+\.+[a-z]/;
 		if(email==""){
 			var nodoPadre = document.getElementsByClassName("email-container input-box")[0];
@@ -102,6 +99,7 @@ function validateForm(){
 	*al menos 6 digitos
 	*/
 	function valPass(){
+		var pass = document.getElementById("input-password").value;
 		if(pass==""){
 			var nodoPadre = document.getElementsByClassName("form-group input-box")[0];
 			var mensaje = document.createElement("span");
@@ -146,6 +144,7 @@ function validateForm(){
 	validar tweet
 	
 	function valTweet(){
+		var tweetNick = document.getElementById("input-social").value;
 		if(tweetNick==""){
 			var nodoPadre = document.getElementsByClassName("input-group")[0];
 			var mensaje = document.createElement("span");
@@ -159,7 +158,8 @@ function validateForm(){
 	valTweet();
 	/*
 	validar checkbox
-		function valCheck(){
+	function valCheck(){
+		var checkbox = document.getElementsByClassName("checkbox ")[0];
 		if( !checkbox.checked ){
   			var nodoPadre = document.getElementsByClassName("checkbox ")[0];
 			var mensaje = document.createElement("span");
