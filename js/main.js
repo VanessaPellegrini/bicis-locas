@@ -4,7 +4,6 @@ function validateForm(){
 	var lastName = document.getElementById("lastname").value;
 	var email = document.getElementById("input-email").value;
 	var pass = document.getElementById("input-password").value;
-	var index = document.getElementsByClassName("form-control")[5].value;
 	var tweetNick = document.getElementById("input-social").value;
 	var checkbox = document.getElementsByClassName("checkbox ")[0];
 	var firstChar = /([A-Z])[a-z]/;
@@ -129,17 +128,18 @@ function validateForm(){
 	/* validar lista
 	*/
 	function valIndex(){
-		if(index == "" || index == "0") {
-			var nodoPadre = document.getElementsByClassName("form-group input-box")[1];
-			var mensaje = document.createElement("span");
-			var index_msj = document.createTextNode("Debe seleccionar al menos una opción");
-			nodoPadre.appendChild(mensaje);
-			mensaje.appendChild(index_msj);
-  			
-  		}else{
-  			return true;
+		var index = document.getElementsByTagName("select");
+		for (var i = 0; i < index.length; i++){
+			if(index[i].value=="0"){
+				var nodoPadre = document.getElementsByClassName("form-group input-box")[1];
+				var mensaje = document.createElement("span");
+				var index_msj = document.createTextNode("Debe seleccionar al menos una opción");
+				nodoPadre.appendChild(mensaje);
+				mensaje.appendChild(index_msj);	
+  			}else{
+  				return true;
+  			};
   		};
-  
 	};
 	valIndex();
 	/************************FUNCIONAN*************************************************
